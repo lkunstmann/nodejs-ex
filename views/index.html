@@ -33,7 +33,7 @@ i.icon-pink {
       <nav class="nav-extended grey lighten-4">
       	<div class="container">
 		    <div class="nav-wrapper">
-		      <a href="#" style="color: rgb(226,0,116);font-family: "TeleGrotesk Headline Ultra", sans-serif;" class="brand-logo"><strong>Order Suite</strong></a>
+		      <a href="/" style="color: rgb(226,0,116);font-family: "TeleGrotesk Headline Ultra", sans-serif;" class="brand-logo"><strong>Order Suite</strong></a>
 		      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons icon-pink">menu</i></a>
 		      <ul id="nav-mobile" class="right hide-on-med-and-down">
 		        <li><a  style="color: rgb(226,0,116);" href="">English</a></li>
@@ -60,13 +60,13 @@ i.icon-pink {
 
 	 <div id="AppAgile" class="col s12">
 	 <br>
-	 	<form>
+	 	<form action="/" method="POST">
 		  	<div class="container">
-		  		
+
 		  		<!-- Formular -->
 
 		  	  <ul class="collapsible">
-			    <li>
+			    <li class="active">
 			      <div class="collapsible-header">Projekt</div>
 			      <div class="collapsible-body">
 			      	<p style="text-align: center;">Verpflichtende Angaben</p>
@@ -74,7 +74,7 @@ i.icon-pink {
 
 			      	    <div class="row">
 					      <div class="input-field">
-					        <input id="applicationname" type="text" class="validate"/>
+					        <input id="applicationname" type="text" name ="appname" class="validate"/>
 					        <label for="applicationname">Name der Applikation</label>
 					      </div>
 					    </div>
@@ -82,32 +82,32 @@ i.icon-pink {
 					    	<!-- Anforderer + Auswahl prod, nonprod, sandbox -->
 			      		<div class="row">
 					      <div class="input-field">
-					        <input id="anforderer" type="email" class="validate tooltipped" data-position="bottom" data-tooltip="berechtigt zur Beauftragung und zur Änderung des Projektes">
+					        <input id="anforderer" type="email" name ="requestor" class="validate tooltipped" data-position="bottom" data-tooltip="berechtigt zur Beauftragung und zur Änderung des Projektes">
 					        <label for="anforderer">Anforderer (E-Mail)</label>
 					      </div>
 					    </div>
 					    <div class="row">
 					    	<p style="display: inline;">
 						      <label>
-						        <input name="group1" type="radio"/>
+						        <input name="group1" value="nonprod Umgebung" type="radio"/>
 						        <span>nonprod</span>
 						      </label>
 						     </p>
 							<p style="display: inline;">
 						      <label>
-						        <input name="group1" type="radio"/>
+						        <input name="group1" value="prod Umgebung" type="radio"/>
 						        <span>prod</span>
 						      </label>
 						    </p>
 						 	<p style="display: inline;">
 						      <label>
-						        <input name="group1" type="radio"/>
+						        <input name="group1" value="Sandbox Umgebung" type="radio"/>
 						        <span>Sandbox</span>
 						      </label>
 						    </p>
 						</div>
 
-			      
+
 			    </li>
 			    <li>
 			      <div class="collapsible-header">Kosten & Ansprechpartner</div>
@@ -115,26 +115,26 @@ i.icon-pink {
 
 			      			<!-- Anforderer + Kosten + Kostenansprechpartner -->
 			      		<p style="text-align: center;">Verpflichtende Angaben</p>
-			      		
+
 			      		<div class="row">
 					      <div class="input-field">
-					        <input id="kostenelement" type="text" class="validate tooltipped" data-position="bottom" data-tooltip="PSP-Element">
+					        <input id="kostenelement" name ="psp" type="text" class="validate tooltipped" data-position="bottom" data-tooltip="PSP-Element">
 					        <label for="kostenelement">Verrechngselement</label>
 					      </div>
 					    </div>
 					   <div class="row">
 					      <div class="input-field">
-					        <input id="koverantwortlicher" type="email" class="validate">
+					        <input id="koverantwortlicher" name ="costone" type="email" class="validate">
 					        <label for="koverantwortlicher">Kostenverantwortlicher (E-Mail)</label>
 					      </div>
 					    </div>
 
 			      			<!-- Ansprechpartner -->
 
-			      		
+
 					    <div class="row">
 					      <div class="input-field">
-					        <input id="itsem" type="email" class="validate">
+					        <input id="itsem" type="email" name ="sem" class="validate">
 					        <label for="itsem">IT SeM (E-Mail)</label>
 					      </div>
 					    </div>
@@ -143,19 +143,19 @@ i.icon-pink {
 
 					    <div class="row">
 					      <div class="input-field">
-					        <input id="am" type="email" class="validate">
+					        <input id="am" type="email" name ="am" class="validate">
 					        <label for="am"> AM (E-Mail)</label>
 					      </div>
-				
-					    
+
+
 					      <div class="input-field">
-					        <input id="tsm" type="email" class="validate">
+					        <input id="tsm" type="email" name ="tsm" class="validate">
 					        <label for="tsm">TSM (E-Mail)</label>
 					      </div>
-					    
-					    
+
+
 					      <div class="input-field">
-					        <input id="devopsteam" type="email" class="validate">
+					        <input id="devopsteam" name="devops" type="email" class="validate">
 					        <label for="devopsteam">Dev Ops Team (E-Mail)</label>
 					      </div>
 					    </div>
@@ -173,7 +173,7 @@ i.icon-pink {
 
 			      		<div class="row">
 					      <div class="input-field">
-					        <input id="projektadmin" type="email" class="validate tooltipped" data-position="bottom" data-tooltip="Ein Projekt-Admin mit der Berechtigung, weitere User zu ihrem Projekt hinzuzufügen und Rollen unterhalb der Projekt-Admin Rolle im eigenen Projekt zu vergeben">
+					        <input id="projektadmin" type="email" name="admin" class="validate tooltipped" data-position="bottom" data-tooltip="Ein Projekt-Admin mit der Berechtigung, weitere User zu ihrem Projekt hinzuzufügen und Rollen unterhalb der Projekt-Admin Rolle im eigenen Projekt zu vergeben">
 					        <label for="projektadmin">Projektadmin-Rolle (E-Mail)</label>
 					      </div>
 					    </div>
@@ -182,42 +182,42 @@ i.icon-pink {
 
 			      		<div class="row">
 					      <div class="input-field ">
-					        <input id="edit" type="email" class="validate tooltipped" data-position="bottom" data-tooltip="Ein normaler User, dieser kann keine Rollen vergeben oder Projekte anlegen">
+					        <input id="edit" type="email" name="edit" class="validate tooltipped" data-position="bottom" data-tooltip="Ein normaler User, dieser kann keine Rollen vergeben oder Projekte anlegen">
 					        <label for="edit">Edit-Rolle (E-Mail)</label>
 					      </div>
 					    </div>
 
 					   <div class="row">
 					      <div class="input-field">
-					        <input id="view" type="text" class="validate tooltipped" data-position="bottom" data-tooltip="Nur Rechte zum Ansehen des Projektes">
+					        <input id="view" type="email" name="view" class="validate tooltipped" data-position="bottom" data-tooltip="Nur Rechte zum Ansehen des Projektes">
 					        <label for="view">View-Rolle (E-Mail)</label>
 					      </div>
 					    </div>
 					    <p style="text-align: center;">Bedarf (Bitte ausfüllen)</p>
 					    <div class="row">
 					      <div class="input-field">
-					        <input id="ram" type="number" class="validate">
+					        <input id="ram" type="number" name="ram"class="validate">
 					        <label for="ram">Geschätzter RAM-Bedarf in GB</label>
 					      </div>
 					      <div class="input-field">
-					        <input id="core" type="number" class="validate">
+					        <input id="core" type="number" name="core" class="validate">
 					        <label for="core">Geschätzter Core-Bedarf (1 Core ~ 66.000 tpmc)</label>
-					      </div> 
+					      </div>
 					    </div>
 					    <div class="row">
 					    	<p>CI/CD Workbench benötigt?</p>
 					    	<p style="display: inline;">
 						      <label >
-						        <input name="group4" type="radio"/>
+						        <input name="group4"value="ja" type="radio"/>
 						        <span>ja</span>
 						      </label>
 						     </p>
 							<p style="display: inline;">
 						      <label>
-						        <input name="group4" type="radio"/>
+						        <input name="group4" value="nein" type="radio"/>
 						        <span>nein</span>
 						      </label>
-						    </p>					    
+						    </p>
 						</div>
 
 
@@ -228,13 +228,13 @@ i.icon-pink {
 					  <div class="row">
 	    					<div class="col s12 m5">
 	      						<div class="card-panel grey lighten-4">
-	        						<span class="pink-text">Die maximale Freigabe für Applikationen auf der Open Telekom Cloud ist D3, DSK vertraulich. <br> Die Durchführung des PSA Verfahrens für die Applikation liegt in der Verantwortung des Kunden. <br> Die Plattform selbst besitzt eine PSA Freigabe. 
+	        						<span class="pink-text">Die maximale Freigabe für Applikationen auf der Open Telekom Cloud ist D3, DSK vertraulich. <br> Die Durchführung des PSA Verfahrens für die Applikation liegt in der Verantwortung des Kunden. <br> Die Plattform selbst besitzt eine PSA Freigabe.
 	        						</span>
 	      						</div>
 	    					</div>
-	 					</div>	
-	 						  
-			  	<button class="btn waves-effect waves-light pink" type="submit" style="font-weight:bold;" name="action">BEAUFTRAGEN
+	 					</div>
+
+			  	<button class="btn waves-effect waves-light pink" type="submit" style="font-weight:bold;">weiter
 			  </button>
 		  	</div>
 
@@ -281,7 +281,7 @@ i.icon-pink {
     		var elems = document.querySelectorAll('.tooltipped');
     		var instances = M.Tooltip.init(elems);
   		  });
-		  
+
 	  </script>
   </body>
 </html>

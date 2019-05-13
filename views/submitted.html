@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Orderportal Cloud</title>
+          <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<style type="text/css">
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:before,
+[type="radio"].with-gap:checked + span:after {
+  border: 2px solid #e20074;
+}
+
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:after {
+  background-color: #e20074;
+}
+i.icon-pink {
+    color: #e20074;
+}
+
+    	</style>
+  </head>
+  <body>
+  	 <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  	<!-- Navbar mit Tabs zur Auswahl des jeweiligen Bestellprozesses -->
+      <nav class="nav-extended grey lighten-4">
+      	<div class="container">
+		    <div class="nav-wrapper">
+		      <a href="" style="color: rgb(226,0,116);font-family: "TeleGrotesk Headline Ultra", sans-serif;" class="brand-logo"><strong>Order Suite</strong></a>
+		      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons icon-pink">menu</i></a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a  style="color: rgb(226,0,116);" href="">English</a></li>
+		        <li><a  style="color: rgb(226,0,116);" href="">Info</a></li>
+		      </ul>
+		    </div>
+		    <div class="nav-content grey lighten-4">
+		      <ul class="tabs grey lighten-4">
+		        <li class="tab disabled"><a  style="color: rgb(226,0,116);" href="#AppAgile">AppAgile</a></li>
+		        <li class="tab disabled"><a  style="color: grey;" href="#OTC">OTC</a></li>
+		      </ul>
+		    </div>
+		</div>
+	  </nav>
+
+	  <ul class="sidenav" id="mobile-demo">
+		        <li><a  style="color: rgb(226,0,116);" href="">English</a></li>
+		        <li><a  style="color: rgb(226,0,116);" href="">Info</a></li>
+	  </ul>
+
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card-panel grey-lighten-4">
+            <table class="responsive-table highlighted">
+              <tr>
+              	<td>Applikationsname</td>
+                <td><%= data.appname %></td>
+              </tr>
+              <tr>
+                <td>Anforderer</td>
+                <td><%= data.requestor %></td>
+              </tr>
+              <tr>
+                <td>Umgebung</td>
+                <td><%= data.group1 %></td>
+              </tr>
+              <tr>
+                <td>PSP-Element</td>
+                <td> <%= data.psp %> </td>
+              </tr>
+              <tr>
+                <td>Kostenverantwortlicher</td>
+                <td><%= data.costone %></td>
+              </tr>
+              <tr>
+                <td>SM<br> AM<br> TSM<br> DevOps Team</td>
+                <td><%= data.sem %><br><%= data.am %><br><%= data.tsm %><br><%= data.devops %><br></td>
+              </tr>
+              <tr>
+                <td>Admin-Rollen</td>
+                <td><%= data.admin %><br><%= data.admin1 %><br><%= data.admin2 %><br><%= data.admin3 %><br></td>
+              </tr>
+              <tr>
+                <td>Edit-Rollen</td>
+                <td><%= data.edit %><br><%= data.edit1 %><br><%= data.edit2 %><br><%= data.edit3 %><br></td>
+              </tr>
+              <tr>
+                <td>View-Rollen</td>
+                <td><%= data.view %><br><%= data.view1 %><br><%= data.view2 %><br><%= data.view3 %><br></td>
+              </tr>
+              <tr>
+                <td>Ram-Schätzung</td>
+                <td><%= data.ram %></td>
+              </tr>
+
+
+            </table>
+
+          </div>
+        </div>
+        <div class="col s12 m5">
+          <div class="card-panel grey-lighten-4">
+          <p class="pink-text" style="font-weight: bold;"> Sie haben erfolgreich bestellt.<br> Sie sollten in Kürze eine Mail mit Ihren Bestelldaten erhalten</p>
+
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>

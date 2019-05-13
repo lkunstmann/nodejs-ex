@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Orderportal Cloud</title>
+          <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    	<style type="text/css">
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:before,
+[type="radio"].with-gap:checked + span:after {
+  border: 2px solid #e20074;
+}
+
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:after {
+  background-color: #e20074;
+}
+i.icon-pink {
+    color: #e20074;
+}
+
+    	</style>
+  </head>
+  <body>
+  	 <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  	<!-- Navbar mit Tabs zur Auswahl des jeweiligen Bestellprozesses -->
+      <nav class="nav-extended grey lighten-4">
+      	<div class="container">
+		    <div class="nav-wrapper">
+		      <a href="../" style="color: rgb(226,0,116);font-family: "TeleGrotesk Headline Ultra", sans-serif;" class="brand-logo"><strong>Order Suite</strong></a>
+		      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons icon-pink">menu</i></a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a  style="color: rgb(226,0,116);" href="">English</a></li>
+		        <li><a  style="color: rgb(226,0,116);" href="">Info</a></li>
+		      </ul>
+		    </div>
+		    <div class="nav-content grey lighten-4">
+		      <ul class="tabs grey lighten-4">
+		        <li class="tab disabled"><a  style="color: rgb(226,0,116);" href="#AppAgile">AppAgile</a></li>
+		        <li class="tab disabled"><a  style="color: grey;" href="#OTC">OTC</a></li>
+		      </ul>
+		    </div>
+		</div>
+	  </nav>
+
+	  <ul class="sidenav" id="mobile-demo">
+		        <li><a  style="color: rgb(226,0,116);" href="">English</a></li>
+		        <li><a  style="color: rgb(226,0,116);" href="">Info</a></li>
+	  </ul>
+
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m7">
+          <div class="card-panel grey-lighten-4">
+            <table class="responsive-table highlighted">
+  <tr>
+  	<td>Applikationsname</td>
+    <td><%= data.appname %></td>
+  </tr>
+  <tr>
+    <td>Anforderer</td>
+    <td><%= data.requestor %></td>
+  </tr>
+  <tr>
+    <td>Umgebung</td>
+    <td><%= data.group1 %></td>
+  </tr>
+  <tr>
+    <td>PSP-Element</td>
+    <td> <%= data.psp %> </td>
+  </tr>
+  <tr>
+    <td>Kostenverantwortlicher</td>
+    <td><%= data.costone %></td>
+  </tr>
+  <tr>
+    <td>SM<br> AM<br> TSM<br> DevOps Team</td>
+    <td><%= data.sem %><br><%= data.am %><br><%= data.tsm %><br><%= data.devops %><br></td>
+  </tr>
+  <tr>
+    <td>Admin-Rollen</td>
+    <td><%= data.admin %><br><%= data.admin1 %><br><%= data.admin2 %><br><%= data.admin3 %><br></td>
+  </tr>
+  <tr>
+    <td>Edit-Rollen</td>
+    <td><%= data.edit %><br><%= data.edit1 %><br><%= data.edit2 %><br><%= data.edit3 %><br></td>
+  </tr>
+  <tr>
+    <td>View-Rollen</td>
+    <td><%= data.view %><br><%= data.view1 %><br><%= data.view2 %><br><%= data.view3 %><br></td>
+  </tr>
+  <tr>
+    <td>Ram-Schätzung</td>
+    <td><%= data.ram %></td>
+  </tr>
+
+
+</table>
+
+          </div>
+        </div>
+
+        <div class="col s12 m5">
+          <div class="card-panel grey-lighten-4">
+          <p> Hier sind Ihre Daten zur Bestellung eines AppAgile Projektes</p>
+
+          <form action="/submit" method="POST">
+            <button type="submit "class="waves-effect waves-light btn-large pink">beauftragen</button>
+            <br><br>
+            <a class="waves-effect waves-light btn-large pink" onclick="history.go(-1); return false;">bearbeiten</a>
+
+      		  		<!-- Formular -->
+
+
+                <div class="unsee" style="display: none;">
+      			      	    <div class="row">
+      					      <div class="input-field">
+      					        <input id="applicationname" type="text" value="<%= data.appname %>" name ="appname" class="validate"/>
+      					        <label for="applicationname">Name der Applikation</label>
+      					      </div>
+      					    </div>
+
+      					    	<!-- Anforderer + Auswahl prod, nonprod, sandbox -->
+      			      		<div class="row">
+      					      <div class="input-field">
+      					        <input id="anforderer" type="email" name ="requestor" value="<%= data.requestor %>" class="validate tooltipped" data-position="bottom" data-tooltip="berechtigt zur Beauftragung und zur Änderung des Projektes">
+      					        <label for="anforderer">Anforderer (E-Mail)</label>
+      					      </div>
+      					    </div>
+      					    <div class="row">
+      					    	<p style="display: inline;">
+                       <input id="anforderer"  name ="group1" value="<%= data.group1 %>" >
+                    </div>
+
+
+
+      			      		<div class="row">
+      					      <div class="input-field">
+      					        <input id="kostenelement" name ="psp" type="text" class="validate tooltipped" value="<%= data.psp %>">
+      					        <label for="kostenelement">Verrechngselement</label>
+      					      </div>
+      					    </div>
+      					   <div class="row">
+      					      <div class="input-field">
+      					        <input id="koverantwortlicher" name ="costone" type="email" value="<%= data.costone %> "class="validate">
+      					        <label for="koverantwortlicher">Kostenverantwortlicher (E-Mail)</label>
+      					      </div>
+      					    </div>
+
+      			      			<!-- Ansprechpartner -->
+
+
+      					    <div class="row">
+      					      <div class="input-field">
+      					        <input id="itsem" type="email" name ="sem" value="<%= data.psp %>"class="validate">
+      					        <label for="itsem">IT SeM (E-Mail)</label>
+      					      </div>
+      					    </div>
+
+      					    <p style="text-align: center;">Optional</p>
+
+      					    <div class="row">
+      					      <div class="input-field">
+      					        <input id="am" type="email" value="<%= data.am %>" name ="am" class="validate">
+      					        <label for="am"> AM (E-Mail)</label>
+      					      </div>
+
+
+      					      <div class="input-field">
+      					        <input id="tsm" type="email" value="<%= data.tsm %>" name ="tsm" class="validate">
+      					        <label for="tsm">TSM (E-Mail)</label>
+      					      </div>
+
+
+      					      <div class="input-field">
+      					        <input id="devopsteam" name="devops" value="<%= data.devops %>" type="email" class="validate">
+      					        <label for="devopsteam">Dev Ops Team (E-Mail)</label>
+      					      </div>
+      					    </div>
+
+
+
+      			      			<!-- Rollen -->
+
+      			      		<div class="row">
+      					      <div class="input-field">
+      					        <input id="projektadmin" type="email" name="admin" value="<%= data.admin %>" class="validate tooltipped" data-position="bottom" data-tooltip="Ein Projekt-Admin mit der Berechtigung, weitere User zu ihrem Projekt hinzuzufügen und Rollen unterhalb der Projekt-Admin Rolle im eigenen Projekt zu vergeben">
+      					        <label for="projektadmin">Projektadmin-Rolle (E-Mail)</label>
+      					      </div>
+      					    </div>
+
+      					    <p style="text-align: center;">Optional</p>
+
+      			      		<div class="row">
+      					      <div class="input-field ">
+      					        <input id="edit" type="email" name="edit" value="<%= data.edit %> "class="validate tooltipped" data-position="bottom" data-tooltip="Ein normaler User, dieser kann keine Rollen vergeben oder Projekte anlegen">
+      					        <label for="edit">Edit-Rolle (E-Mail)</label>
+      					      </div>
+      					    </div>
+
+      					   <div class="row">
+      					      <div class="input-field">
+      					        <input id="view" type="email" name="view" <%= data.view %> class="validate tooltipped" data-position="bottom" data-tooltip="Nur Rechte zum Ansehen des Projektes">
+      					        <label for="view">View-Rolle (E-Mail)</label>
+      					      </div>
+      					    </div>
+      					    <p style="text-align: center;">Bedarf (Bitte ausfüllen)</p>
+      					    <div class="row">
+      					      <div class="input-field">
+      					        <input id="ram" type="number" value="<%= data.ram %> "name="ram"class="validate">
+      					        <label for="ram">Geschätzter RAM-Bedarf in GB</label>
+      					      </div>
+      					      <div class="input-field">
+      					        <input id="core" type="number" name="core" value="<%= data.core %> "class="validate">
+      					        <label for="core">Geschätzter Core-Bedarf (1 Core ~ 66.000 tpmc)</label>
+      					      </div>
+      					    </div>
+      					    <div class="row">
+                      <input  value="<%= data.ram %> "name="group4" value="<%= data.group4 %> "class="validate">
+      						</div>
+</div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+	 <script type="text/javascript">
+	  	  document.addEventListener('DOMContentLoaded', function() {
+		    var elems = document.querySelectorAll('.sidenav');
+		    var instances = M.Sidenav.init(elems);
+  			});
+	  	  document.addEventListener('DOMContentLoaded', function() {
+		    var elems = document.querySelectorAll('.tabs');
+		    var instances = M.Tabs.init(elems);
+  			});
+		  document.addEventListener('DOMContentLoaded', function() {
+		    var elems = document.querySelectorAll('.collapsible');
+		    var instances = M.Collapsible.init(elems);
+		  });
+		  document.addEventListener('DOMContentLoaded', function() {
+		    var elems = document.querySelectorAll('.tap-target');
+		    var instances = M.TapTarget.init(elems);
+		  });
+		  document.addEventListener('DOMContentLoaded', function() {
+    		var elems = document.querySelectorAll('.tooltipped');
+    		var instances = M.Tooltip.init(elems);
+  		  });
+
+	  </script>
+  </body>
+</html>
