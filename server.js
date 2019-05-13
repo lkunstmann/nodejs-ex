@@ -2,7 +2,9 @@
 var express = require('express'),
     app     = express(),
     morgan  = require('morgan');
-    
+
+
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
@@ -24,7 +26,7 @@ if (mongoURL == null) {
     mongoPassword = process.env[mongoServiceName + '_PASSWORD'];
     mongoUser = process.env[mongoServiceName + '_USER'];
 
-  // If using env vars from secret from service binding  
+  // If using env vars from secret from service binding
   } else if (process.env.database_name) {
     mongoDatabase = process.env.database_name;
     mongoPassword = process.env.password;
@@ -73,26 +75,52 @@ var initDb = function(callback) {
   });
 };
 
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const puppeteer = require('puppeteer');
+const fs = require ('fs-extra');
+
+
+
+
 app.get('/', function (req, res) {
-  // try to initialize the db on every request if it's not already
-  // initialized.
-  if (!db) {
-    initDb(function(err){});
-  }
-  if (db) {
-    var col = db.collection('counts');
-    // Create a document with request IP and current time of request
-    col.insert({ip: req.ip, date: Date.now()});
-    col.count(function(err, count){
-      if (err) {
-        console.log('Error running count. Message:\n'+err);
-      }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-    });
-  } else {
-    res.render('index.html', { pageCountMessage : null});
-  }
+res.render('index.html', {qs:req.query});
 });
+
+app.post('/',urlencodedParser, function (req, res) {
+  console.log(req.body);
+  res.render('order.html', {data: req.body});
+});
+
+app.post('/submit',urlencodedParser, function (req, res) {
+/*
+    (async function () {
+      try {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+
+        await page.setContent (
+          '<%= data.appname %> ', {data: req.body});
+
+        await page.emulateMedia('screen');
+        await page.pdf({
+          path: 'testpdf.pdf',
+          format: 'A4',
+          printBackground: true
+        });
+          console.log ('PDF was created');
+          await browser.close();
+
+      } catch (e) {
+        console.log('error: PDF could not be created', e);
+      }
+    })();
+  */
+
+  res.render ('submitted.html', {data: req.body});
+});
+
+
 
 app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
